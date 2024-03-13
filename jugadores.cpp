@@ -1,5 +1,4 @@
 #include "jugador.h"
-#include "enemigo.h"
 #include <iostream>
 #include <ctime>   // Función time() para generar una nueva seed aleatoria.
 using namespace std;
@@ -9,7 +8,6 @@ using namespace std;
 int main()
 {
     srand(time(0)); // Seed para generar valores aleatorios
-
 
     Jugador j1(100, 10, "Mario");
     Jugador j2(100, 10, "Carlos");

@@ -1,12 +1,12 @@
 #include "jugador.h"
-#include "enemigo.h"
+#include "Base.h"
 #include <iostream>
 #include <string>
 #include <cstdlib>
 
 using namespace std;
 
-Enemigo::Enemigo()
+Base::Base()
 {
     /*
         Asignar 100 a hp y 5 a attack como valores default.
@@ -17,7 +17,28 @@ Enemigo::Enemigo()
     this->nombre = "No definido";
 }
 
-Enemigo::Enemigo(int vida, int attack, string nombre)
+Base::Base(int vida, int attack)
+{
+    /*
+        Asignar los parámetros recibidos a las propiedades del objeto.
+        No se pueden asignar valores negativos a hp y attack.
+        Máximo 200 hp y 20 attack
+    */
+    this->vida = vida;
+    if (vida > 200)
+        this->vida = 200;
+    if (vida <= 0)
+        this->vida = 1;
+
+    this->attack = attack;
+    if (attack > 200)
+        this->attack = 200;
+    if (attack <= 0)
+        this->attack = 1;
+
+}
+
+ Base::Base(int vida, int attack, string nombre)
 {
     /*
         Asignar los parámetros recibidos a las propiedades del objeto.
@@ -39,7 +60,8 @@ Enemigo::Enemigo(int vida, int attack, string nombre)
     this->nombre = nombre;
 }
 
-void Enemigo::atacarJugador(Jugador &j2)
+void Base::atacar(Base &j2)
+
 {
     int ran = rand() % 5;
     if (ran == 0)
